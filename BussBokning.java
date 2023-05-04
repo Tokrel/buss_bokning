@@ -93,7 +93,7 @@ String kön = "";
 while (true) {
     System.out.println("Skriv in vilken sittplats du vill ha (1-21):");
     try {
-        sittplats = scanner.nextInt();
+        sittplats = (scanner.nextInt());
         if (sittplats < 1 || sittplats > 21) {
             throw new InputMismatchException();
         }
@@ -142,10 +142,10 @@ while (true) {
             System.out.println("platsen är redan bokad");
         }
         else{
-        platserinfo[0][sittplats] = namn;
-        platserinfo[1][sittplats] = kön;
-        platser[1][sittplats] = 1;
-        platser[2][sittplats] = persnum;
+        platserinfo[0][sittplats-1] = namn;
+        platserinfo[1][sittplats-1] = kön;
+        platser[1][sittplats-1] = 1;
+        platser[2][sittplats-1] = persnum;
         System.out.println("din plats är nu bokad");
       }
     }
