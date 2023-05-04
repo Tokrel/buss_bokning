@@ -220,30 +220,31 @@ while (true) {
             }
          int vinst = bokadeplatserunder18*149+bokadeplatseröver18*299+bokadeplatseröver69*200;
          System.out.println("bussen har tjänat "+vinst +"kr");
+         System.out.println("uträckning med rekursionsmetod: "+ bokningskostnaduträkning(bokadeplatserunder18,bokadeplatseröver18,bokadeplatseröver69)+"kr");
             
         }
 
-        // här är rekursion metoden men outputen funkar inte???
         public static int bokningskostnaduträkning(int under18, int over18, int over69) {
             int cost = 0;
             if (under18 == 0 && over18 == 0 && over69 == 0) {
                 return 0; 
-            } else {
+            } 
                 
                 if (under18 > 0) {
                     cost += 149;
-                    cost += bokningskostnaduträkning(under18-1, over18 , over69);
+                    under18--;
                 }
-                if (over18 > 0) {
+                else if (over18 > 0) {
                     cost += 299;
-                    cost += bokningskostnaduträkning(under18, over18 - 1, over69);
+                    over18--;
+                    
                 }
-                if (over69 > 0) {
+                else if (over69 > 0) {
                     cost += 200;
-                    cost += bokningskostnaduträkning(under18, over18 , over69-1);
+                    over69--;
                 }
-                return cost;
-            }
+                return cost + bokningskostnaduträkning(under18, over18, over69);
+                
         }
 
 
@@ -374,7 +375,7 @@ while (true) {
   
      
     while(true){
-        System.out.println("välj instruktion: 1.bokning 2.Antal lediga platser 3.Beräkna vinst 4.Hitta bokning 5.kolla alla över/under 18 6.Ta bort bokning 7.Sorterad lista 8.Rekursion problem??? ");
+        System.out.println("välj instruktion: 1.bokning 2.Antal lediga platser 3.Beräkna vinst 4.Hitta bokning 5.kolla alla över/under 18 6.Ta bort bokning 7.Sorterad lista");
         int playerMove = helium1.nextInt();
         switch (playerMove) {
             case 1:
@@ -443,19 +444,6 @@ while (true) {
             case 7:
             //utskrift av bokningar sorterad äldst först yngst sist Utskriften ska innehålla förnamn, efternamn,födelsedatum & plats.
             sorteing();
-
-            break;
-            case 8:
-            //problem med rekursion 
-            System.out.println("referera till metoden bokningskostnaduträkning");
-            System.out.println("t.e.x");
-            int A = 2;
-            int B = 2;
-            int C = 2; 
-            System.out.println(bokningskostnaduträkning(A,B,C));    
-            System.out.println("ingen aning varför den printar 58320 borde printa rätt pris?????");
-
-            break;
           
             default:
                 System.out.println("Invalid move.");
